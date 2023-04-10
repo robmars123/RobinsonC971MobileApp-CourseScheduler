@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RobinsonC971MobileApp.MainPage"
+             Title="">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Course Scheduler" HorizontalTextAlignment="Center" TextColor="White" FontSize="21"/>
+        </Frame>
+        <!--Add Term-->
+        <Label Text="Add Term" HorizontalTextAlignment="Center" TextColor="Black" FontSize="13" Margin="50"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+               />
+        <Button  Text="+" FontSize="40" Margin="-50"
+                TextColor="Blue"                 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                BackgroundColor="Transparent"
+                Clicked="OnButtonClickAddTerm"/>
+        
+        <ListView Grid.Row="1" Grid.ColumnSpan="3" x:Name="termListView" VerticalOptions="FillAndExpand" Margin="50">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell IsEnabled="True">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                            <Label Text="{Binding Title}" VerticalOptions="Center" TextColor="Blue"/>
+                            <Label Text="{Binding StartDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
+                            <Label Text="-" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Text="{Binding EndDate, StringFormat='{}{0:MM/dd/yyyy}'}" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

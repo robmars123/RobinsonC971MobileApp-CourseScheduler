@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RobinsonC971MobileApp.Views.Assessments">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="Assessments" HorizontalTextAlignment="Center" TextColor="White" FontSize="21"/>
+            </Frame>
+            <!--Add Term-->
+            <Label Text="Add Assessment" HorizontalTextAlignment="Center" TextColor="Black" FontSize="13" Margin="50"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+               />
+            <Button  Text="+" FontSize="40" Margin="-50"
+                TextColor="Blue"                 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                BackgroundColor="Transparent"
+                Clicked="AddAssessment"/>
+
+            <ListView Grid.Row="1" Grid.ColumnSpan="3" x:Name="AssessmentsView" VerticalOptions="FillAndExpand" Margin="50">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="True">
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding AssessmentType}" TextColor="Black" HorizontalOptions="Center"/>
+                                <Label Text="{Binding Name}" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
