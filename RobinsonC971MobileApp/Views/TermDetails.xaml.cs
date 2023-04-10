@@ -25,7 +25,7 @@ namespace RobinsonC971MobileApp.Views
             
             coursesListView.ItemsSource = App.AppDB.GetCourses(term);
         }
-        async private void Course_Clicked(object sender, ItemTappedEventArgs e)
+        private async void Course_Clicked(object sender, ItemTappedEventArgs e)
         {
             Course course = (Course)e.Item;
             await Navigation.PushModalAsync(new CourseDetails(course));
@@ -40,9 +40,10 @@ namespace RobinsonC971MobileApp.Views
         {
             Navigation.PushModalAsync(new AddCourse(term));
         }
-        private void DropTerm(object sender, EventArgs e)
+        private async void DropTerm(object sender, EventArgs e)
         {
-
+            App.AppDB.DeleteTerm(term);
+            await Navigation.PopModalAsync();
         }
     }
 }

@@ -41,15 +41,19 @@ namespace RobinsonC971MobileApp.Services
             db.UpdateAsync(term);
         }
 
+        public void DeleteTerm(Term term)
+        {
+            db.DeleteAsync(term);
+        }
         public List<Course> GetCourses(Term term)
         {
             var list = db.Table<Course>().ToListAsync().Result;
             return list.Where(course => course.TermId == term.Id).ToList();
         }
 
-        public void AddCourse(Course course)
+        public Task<int> AddCourse(Course course)
         {
-            db.InsertAsync(course);
+            return db.InsertAsync(course);
         }
 
         public void UpdateCourse(Course course)
@@ -63,7 +67,7 @@ namespace RobinsonC971MobileApp.Services
         }
         public void AddAssessment(Assessment assessment)
         {
-            db.InsertAsync(assessment);
+             db.InsertAsync(assessment);
         }
         public List<Assessment> GetAssessments(int courseID)
         {

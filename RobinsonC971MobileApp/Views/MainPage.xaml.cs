@@ -47,25 +47,26 @@ namespace RobinsonC971MobileApp
                 testCourse.Notifications = 1;
                 testCourse.Notes = "This class is my first Android App!";
                 testCourse.TermId = testTerm.Id;
-                App.AppDB.AddCourse(testCourse);
+                await App.AppDB.AddCourse(testCourse);
+                var course = App.AppDB.CourseList().Result.OrderByDescending(x => x.Id).FirstOrDefault();
 
                 var dummyObjectiveAssessment = new Assessment();
                 dummyObjectiveAssessment.Name = "Test Assessment 1";
                 dummyObjectiveAssessment.StartDate = new DateTime(2023, 03, 01);
                 dummyObjectiveAssessment.EndDate = new DateTime(2023, 08, 30);
-                dummyObjectiveAssessment.CourseID = testCourse.Id;
+                dummyObjectiveAssessment.CourseID = course.Id;
                 dummyObjectiveAssessment.AssessmentType = "Objective";
                 dummyObjectiveAssessment.Notifications = true;
                 App.AppDB.AddAssessment(dummyObjectiveAssessment);
 
                 var dummyPerformanceAssessment = new Assessment();
-                dummyObjectiveAssessment.Name = "Test Assessment 2";
-                dummyObjectiveAssessment.StartDate = new DateTime(2023, 03, 01);
-                dummyObjectiveAssessment.EndDate = new DateTime(2023, 08, 30);
-                dummyObjectiveAssessment.CourseID = testCourse.Id;
-                dummyObjectiveAssessment.AssessmentType = "Performance";
-                dummyObjectiveAssessment.Notifications = true;
-                App.AppDB.AddAssessment(dummyObjectiveAssessment);
+                dummyPerformanceAssessment.Name = "Test Assessment 2";
+                dummyPerformanceAssessment.StartDate = new DateTime(2023, 03, 01);
+                dummyPerformanceAssessment.EndDate = new DateTime(2023, 08, 30);
+                dummyPerformanceAssessment.CourseID = course.Id;
+                dummyPerformanceAssessment.AssessmentType = "Performance";
+                dummyPerformanceAssessment.Notifications = true;
+                App.AppDB.AddAssessment(dummyPerformanceAssessment);
             }
 
             if (NotificationAlerts == true)
