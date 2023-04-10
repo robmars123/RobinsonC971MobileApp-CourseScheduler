@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Plugin.LocalNotifications;
+using System.Linq;
 
 namespace RobinsonC971MobileApp
 {
@@ -24,6 +25,48 @@ namespace RobinsonC971MobileApp
             termList = App.AppDB.GetTermList().Result;
             courses = App.AppDB.CourseList().Result;
             assessmentList = App.AppDB.AssessmentList().Result;
+
+            //Part 6 Requirements
+            if (!termList.Any())
+            {
+                Term testTerm = new Term();
+                testTerm.Title = "Term 1 - Spring";
+                testTerm.StartDate = new DateTime(2023, 03, 01);
+                testTerm.EndDate = new DateTime(2023, 08, 30);
+                await App.AppDB.AddTerm(testTerm);
+                termList.Add(testTerm);
+
+                var testCourse = new Course();
+                testCourse.Name = "Mobile Application - C971";
+                testCourse.StartDate = new DateTime(2023, 03, 01);
+                testCourse.StartDate = new DateTime(2023, 08, 30);
+                testCourse.Status = "In-Progress";
+                testCourse.InstructorName = "Lauren Provost";
+                testCourse.InstructorPhoneNumber = "385-428-8921";
+                testCourse.InstructorEmailAddress = "lauren.provost@wgu.edu";
+                testCourse.Notifications = 1;
+                testCourse.Notes = "This class is my first Android App!";
+                testCourse.TermId = testTerm.Id;
+                App.AppDB.AddCourse(testCourse);
+
+                var dummyObjectiveAssessment = new Assessment();
+                dummyObjectiveAssessment.Name = "Test Assessment 1";
+                dummyObjectiveAssessment.StartDate = new DateTime(2023, 03, 01);
+                dummyObjectiveAssessment.EndDate = new DateTime(2023, 08, 30);
+                dummyObjectiveAssessment.CourseID = testCourse.Id;
+                dummyObjectiveAssessment.AssessmentType = "Objective";
+                dummyObjectiveAssessment.Notifications = true;
+                App.AppDB.AddAssessment(dummyObjectiveAssessment);
+
+                var dummyPerformanceAssessment = new Assessment();
+                dummyObjectiveAssessment.Name = "Test Assessment 2";
+                dummyObjectiveAssessment.StartDate = new DateTime(2023, 03, 01);
+                dummyObjectiveAssessment.EndDate = new DateTime(2023, 08, 30);
+                dummyObjectiveAssessment.CourseID = testCourse.Id;
+                dummyObjectiveAssessment.AssessmentType = "Performance";
+                dummyObjectiveAssessment.Notifications = true;
+                App.AppDB.AddAssessment(dummyObjectiveAssessment);
+            }
 
             if (NotificationAlerts == true)
             {
