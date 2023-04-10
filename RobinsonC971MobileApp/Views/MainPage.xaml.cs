@@ -41,9 +41,9 @@ namespace RobinsonC971MobileApp
                 testCourse.StartDate = new DateTime(2023, 03, 01);
                 testCourse.StartDate = new DateTime(2023, 08, 30);
                 testCourse.Status = "In-Progress";
-                testCourse.InstructorName = "Lauren Provost";
-                testCourse.InstructorPhoneNumber = "385-428-8921";
-                testCourse.InstructorEmailAddress = "lauren.provost@wgu.edu";
+                testCourse.InstructorName = "Robinson Majorenos";
+                testCourse.InstructorPhoneNumber = "603-892-3693";
+                testCourse.InstructorEmailAddress = "rmajore@wgu.edu";
                 testCourse.Notifications = 1;
                 testCourse.Notes = "This class is my first Android App!";
                 testCourse.TermId = testTerm.Id;

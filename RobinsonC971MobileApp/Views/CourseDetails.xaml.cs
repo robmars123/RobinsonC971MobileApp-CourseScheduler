@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,6 +45,14 @@ namespace RobinsonC971MobileApp.Views
         public void Assessments(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new Assessments(course));
+        }
+        public async void ShareCourse(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = Notes.Text,
+                Title = "Share your notes to others!"
+            });
         }
     }
 }

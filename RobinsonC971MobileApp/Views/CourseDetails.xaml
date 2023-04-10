@@ -68,17 +68,15 @@
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                <Label Text="Notes: "/>
-                                <Label x:Name="Notes"/>
-                            </StackLayout>
-                        </ViewCell>
-                        <!--<ViewCell>
-                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <Label Text="Notes:" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                                 <Label x:Name="Notes" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                                <Button Text="Share" x:Name="shareButton" HorizontalOptions="End" Clicked="ShareButton_Clicked"/>
                             </StackLayout>
-                        </ViewCell>-->
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Button Text="Share Notes" x:Name="shareButton" HorizontalOptions="End" Clicked="ShareCourse"/>
+                            </StackLayout>
+                        </ViewCell>
 
 
                     </TableSection>
